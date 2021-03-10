@@ -7,13 +7,48 @@ It uses apollo-android for generating models according to the corresponding quer
 Documentation: https://github.com/apollographql/apollo-android<br><br>
 
 <pre>
-query {
-  repository(owner:"jakewharton", name:"butterknife") {
-    name
-    description
-    forkCount
-    url
-  }
+query UserDetailQuery($owner:String!){
+    user(login: $owner) {
+        name
+        login
+        email
+        avatarUrl
+        followers {
+            totalCount
+        }
+        following {
+            totalCount
+        }
+
+        repositories(first : 3, orderBy: {field: CREATED_AT, direction:DESC}){
+            nodes{
+                name
+                openGraphImageUrl
+                nameWithOwner
+                stargazerCount
+                primaryLanguage{name}
+            }
+        }
+
+        topRepositories(first : 10, orderBy: {field: CREATED_AT, direction:DESC}){
+            nodes{
+                name
+                nameWithOwner
+                stargazerCount
+                primaryLanguage{name}
+            }
+        }
+
+        starredRepositories(first : 10, orderBy: {field: STARRED_AT, direction:DESC}){
+            nodes{
+                name
+                nameWithOwner
+                stargazerCount
+                primaryLanguage{name}
+            }
+        }
+    }
+
 }
 </pre>
 The result of the above query is shown below:
