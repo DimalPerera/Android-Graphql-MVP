@@ -51,8 +51,6 @@ class UserDataViewModel : ContractInterface.Model {
                 userprofile.processingError()
             } catch (e: NullPointerException) {
                 userprofile.processingError()
-            } finally {
-                //userprofile.processingComplete()
             }
         }
 
