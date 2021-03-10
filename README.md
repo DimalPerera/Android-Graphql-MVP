@@ -1,4 +1,4 @@
-# GraphQL using Apollo-Android
+# GraphQL using Apollo-Android + MVP architecture
 This is an example of how to use apollo-android which is a compliant which helps in consuming graphQL APIs. This project consumes the v4 of Github API which is a GraphQL API. <br>
 
 <b>Documentation</b>: https://docs.github.com/en/graphql  <br>
