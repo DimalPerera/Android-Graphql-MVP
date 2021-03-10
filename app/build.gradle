@@ -1,0 +1,72 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id "com.apollographql.apollo"
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 30
+    defaultConfig {
+        applicationId "com.developers.apollographqlexample"
+        minSdkVersion 28
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildTypes.each {
+        it.buildConfigField('String', "AUTH_TOKEN", /"63a4421413f9bbcaf30f9cda94cb714ced987722"/)
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.wear:wear:1.0.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //Apollographql
+    implementation 'com.apollographql.apollo:apollo-runtime:2.5.4'
+    implementation "com.apollographql.apollo:apollo-android-support:2.5.4"
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation "org.jetbrains.anko:anko:0.10.4"
+
+
+    //image loading library
+    implementation("io.coil-kt:coil:1.1.1")
+    compileOnly 'com.google.android.wearable:wearable:2.6.0'
+
+    //Dagger
+    implementation 'com.google.dagger:dagger:2.33'
+    kapt 'com.google.dagger:dagger-compiler:2.33'
+    implementation "com.google.dagger:dagger-android:2.33"
+    kapt "com.google.dagger:dagger-android-processor:2.33"
+}

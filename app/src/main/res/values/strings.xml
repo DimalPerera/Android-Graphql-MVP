@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GraphQL</string>
+
+    <string name="followers_text">%1$s followers</string>
+    <string name="following_text">%1$s following</string>
+
+</resources>
